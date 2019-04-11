@@ -1,11 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>First Web</title>
+	<title>Digital-Clock</title>
+
+	<style type="text/css">
+	body {background:black;
+		padding:0px;
+		margin:0px;
+
+	}
+	.days {color:white;
+		position: absolute;
+		top:73%; left:48%;
+		transform:translate(-50%, -50%);
+		word-spacing: 15px;
+		letter-spacing:0px;	
+		font-size:50px;
+		display:inline-flex;}
+	 
+	.myclock {color:white;
+		transition:1s;
+		font-size:130px;
+		position: absolute;
+		top:50%; left:50%;
+		transform:translate(-50%, -50%);
+		border:10px solid white;
+		padding:15px;
+		letter-spacing:4px;
+		background:blue;
+		font-family: Swis721 BdOul BT;
+		box-shadow:10px 10px 40px white;
+		text-shadow: 3px 1px 5px black;
+	}		
+.days #today {background:orange;
+margin-left:20px; padding-left: 4px;}
+
+	</style>
+	
+	
+	
 </head>
 <body>
-	<h1> Hello world </h1>
-	<p>This is my first website.</p>
+	<div id="clock" class="myclock"></div>
+	<div class="days">Sun Mon Tue Wed Thu Fri <div id="today">Sat</div></div>
 
+
+
+<script type="text/javascript">
+	function showTime() {
+	var date = new Date();
+	var h = date.getHours();
+	var m = date.getMinutes();
+	var s = date.getSeconds();
+	var session = "AM";
+	if(h==0) {h=12}
+		if (h>12) {h= h-12;
+			session= "PM";}
+	h= (h<10) ? "0" + h :h;
+	m = (m<10) ? "0" + m:m;
+	s= (s<10) ? "0" + s:s;
+
+	var time = h + ":" + m + ":" + s +"" +session;
+	document.getElementById("clock").innerText = time;
+	document.getElementById("clock").textContent = time;
+
+setTimeout(showTime, 1000);}
+showTime();
+
+
+
+</script>
 </body>
 </html>
